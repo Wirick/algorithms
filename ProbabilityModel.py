@@ -1,4 +1,5 @@
-## NOTE: Skeleton provided for the UC Berkeley Machine learning class in Fall 2011
+# NOTE: Skeleton provided for the UC Berkeley Machine learning class in Fall 2011,
+# which can be found at http://www.cs.berkeley.edu/~russell/classes/cs194/f11/assignments/a0/sampler.py
 
 from scipy import stats
 from numpy import random, matrix, linalg
@@ -90,5 +91,4 @@ class MixtureModel(ProbabilityModel):
         self.size = len(ap)
 
     def sample(self):
-        x = [ap[x]*pm[x].sample() for x in range(self.size)]
-        return x
+        return [ap[x]*pm[x].sample() for x in range(self.size)]
