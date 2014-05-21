@@ -24,6 +24,7 @@ class UnivariateNormal(ProbabilityModel):
         self.mu = mu
         self.sigma = sigma
 
+    # Returns a sample from a single variable normal distribution
     def sample(self):
         x = super(UnivariateNormal, self).sample()
         mu, sigma, pi, exp = self.mu, self.sigma, math.pi, math.exp
@@ -45,12 +46,13 @@ class MultiVariateNormal(ProbabilityModel):
         self.sigma = matrix(Sigma)
         self.D = Mu.shape[0]
 
+    # Returns a sample from a multivariate Gaussian distribution.
     def sample(self):
         rands = [[super(MultiVariateNormal, self).sample()] for x in range(self.D)]
         mu, sigma, pi, exp, D = self.mu, self.sigma, math.pi, math.exp, self.D
         covFactor = linalg.det(linalg.matrix_power(sigma,1/2))
         dimFactor = math.pow(2*pi,D/2)
-        conj = matrix.transpose(rands-mu) * linalg.inv(sigma) * (rands-mu)
+        conj = (rands-mu).T * sigma.I * (rands-mu)
         return 1/(covFactor*dimFactor) * exp( (-.5)* conj )
         
     
@@ -68,9 +70,9 @@ class Categorical(ProbabilityModel):
         self.size = len(ap)
 
     def sample(self):
-        rand = super(Categorical, self).sample()
-        dx = 1/(float(self.size))
-        for x in range(self.size):
+        rand, size = super(Categorical, self).sample(), self.size
+        dx = 1/(float(size))
+        for x in range(size):
             if (rand-(x+1)*dx) < 0:
                 return self.ap[x]
         return nil
@@ -91,4 +93,5 @@ class MixtureModel(ProbabilityModel):
         self.size = len(ap)
 
     def sample(self):
-        return [ap[x]*pm[x].sample() for x in range(self.size)]
+        ap, pm, size = self.ap, self.pm, self.size
+        return sum([ap[x]*pm[x].sample() for x in range(size)])
