@@ -14,3 +14,9 @@ implemented in a number of different styles
 
 search.py: Contains implementations of breadth first and depth first 
 search working on a standard formatted search problem.
+
+rosalindSolutions.py: Contains the parsing functions and the algorithm
+calls needed to solve problems of larger size than a typical command
+line input function. The typical graph is assumed to be in edge list
+format, and arrays are represented by an order, a newline, and then a string
+of values.
