@@ -29,7 +29,7 @@ def depth_first_search(search_problem):
     """Given a SEARCH_PROBLEM, performs a depth first search on the search problem
     and returns a tuple (x, y, z, w) where x is the length of the solution,
     y is the number of path vertices, z is the closed set of locations, and w
-    is the cost. Note the similarity to bfs."""
+    is the cost. Returns -1 if there is no solution. Note the similarity to bfs."""
     initial_node = (search_problem.get_start_state(), [], 0)
     dq, closed = [], set()
     ## ahem..
@@ -43,7 +43,7 @@ def depth_first_search(search_problem):
         if goal_test(current[1]):
             return (current[1][1] + [end],
                    len(current[1][1] + [end]) - 1,
-                   closed. current[1][2])
+                   closed, current[1][2])
         else:
             new_nodes = successors(current[1])
             for node in new_nodes:
