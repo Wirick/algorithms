@@ -1,11 +1,11 @@
 from heapq import *
 
 
-## Given a SEARCH_PROBLEM, performs a breadth first search on the
-## search problem and returns a tuple (x, y, z, w), where x is the length of
-## the solution, y number of path vertices, and z is the closed set of
-## verticies, and w is the cost. Returns -1 if there is no solution.
 def breadth_first_search(search_problem):
+    """Given a SEARCH_PROBLEM, performs a breadth first search on the
+    search problem and returns a tuple (x, y, z, w), where x is the length of
+    the solution, y number of path vertices, and z is the closed set of
+    verticies, and w is the cost. Returns -1 if there is no solution."""
     initial_node = (search_problem.get_start_state(), [], 0)
     dq, closed = [], set()
     heappush(dq, (initial_node[2], initial_node))
@@ -25,11 +25,11 @@ def breadth_first_search(search_problem):
                     heappush(dq, (node[2], node))
     return -1
 
-## Given a SEARCH_PROBLEM, performs a depth first search on the search problem
-## and returns a tuple (x, y, z, w) where x is the length of the solution,
-## y is the number of path vertices, z is the closed set of locations, and w
-## is the cost. Note the similarity to bfs.
 def depth_first_search(search_problem):
+    """Given a SEARCH_PROBLEM, performs a depth first search on the search problem
+    and returns a tuple (x, y, z, w) where x is the length of the solution,
+    y is the number of path vertices, z is the closed set of locations, and w
+    is the cost. Note the similarity to bfs."""
     initial_node = (search_problem.get_start_state(), [], 0)
     dq, closed = [], set()
     ## ahem..

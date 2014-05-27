@@ -3,8 +3,8 @@ import numpy
 import array
 
 
-## Returns the Nth Fibonacci number
 def fib(n):
+    """Returns the Nth Fibonacci number"""
     if n == 0 or n == 1:
         return n
     past1, past2, newFib = 0, 1, None
@@ -13,27 +13,27 @@ def fib(n):
         past1, past2 = past2, newFib
     return newFib
 
-## Given SORTED integer array of length N, together with an
-## integer X, returns a positive integer i so that Sorted[i] = X
-## and -1 otherwise
-def binary_search(sorted, n, x):
+def binary_search(sortd, n, x):
+    """Given SORTED integer array of length N, together with an
+    integer X, returns a positive integer i so that Sorted[i-1] = X
+    and -1 otherwise."""
     halfway, start_index, end_index, end = math.floor(n/2), 0, n - 1, False
     while end_index > start_index and not end:
         if end_index - start_index == 1:
             end = True
-        if sorted[halfway] < x:
+        if sortd[halfway] < x:
             start_index = halfway
             halfway += math.ceil((end_index - start_index)/2)
-        elif sorted[halfway] > x:
+        elif sortd[halfway] > x:
             end_index = halfway
             halfway -= math.ceil((end_index - start_index)/2)
         else:
             return int(halfway) + 1
     return -1
     
-## Given an ARR of integers with order a positive integer X <= 10^3, returns
-## the sorted arr and the number of swaps performed by the algorithm.
 def insertion_sort(arr, x):
+    """Given an ARR of integers with order a positive integer X <= 10^3, returns
+    the sorted arr and the number of swaps performed by the algorithm."""
     count = 0
     for n in range(x-1):
         for m in range(n+1):
@@ -42,9 +42,9 @@ def insertion_sort(arr, x):
                 count += 1
     return arr, count
 
-## Performs a merge sort on a given ARRay of order X and returns the
-## sorted array.
 def merge_sort(arr, x):
+    """Performs a merge sort on a given ARRay of order X and returns the
+    sorted array."""
     ms = merge_sort
     half = int(floor(float(x/2)))
     if x == 1:
@@ -57,10 +57,10 @@ def merge_sort(arr, x):
         x, y = merge(arr1, arr2, size1, size2)
         return x
 
-## Given an ARRay of length END, searches the array and returns
-## the (indexed from 1) indicies in (a, b) format of two elements such
-## that ARR[a] = -ARR[b], and -1 if such indicies do not exist
 def has_additive_inverse(arr, end):
+    """Given an ARRay of length END, searches the array and returns
+    the (indexed from 1) indicies in (a, b) format of two elements such
+    that ARR[a] = -ARR[b], and -1 if such indicies do not exist"""
     key, count = {}, 0
     for x in range(end):
         count += 1
@@ -70,10 +70,10 @@ def has_additive_inverse(arr, end):
             key[-arr[x]] = x
     return -1, count
 
-## Given sorted arrays FIRST and SECOND of SIZE1, SIZE2, respectively,
-## returns the array representing the merge of FIRST and SECOND, along
-## with its size.
 def merge(first, second, size1, size2):
+    """Given sorted arrays FIRST and SECOND of SIZE1, SIZE2, respectively,
+    returns the array representing the merge of FIRST and SECOND, along
+    with its size."""
     size = size1 + size2
     first_place, second_place = 0, 0
     merged = []
@@ -95,9 +95,8 @@ def merge(first, second, size1, size2):
             second_place += 1
     return numpy.asarray(merged), size
 
-## Given an ARRay of size N, inspects the elements to determine if a
-## single value occupies more than half the indicies of ARR.
 def get_majority_element(arr, n):
+    """single value occupies more than half the indicies of ARR."""
     val = float(n/2)
     vals = defaultdict(lambda: 0)
     for i in range(n):
@@ -108,9 +107,9 @@ def get_majority_element(arr, n):
     return -1
     
 
-## A sorter object using
-## a certain ALGORITHM
 class Sorter:
+    """A sorter object using
+    a certain ALGORITHM"""
 
     def __init__(self, algorithm):
         self.algorithm = algorithm
@@ -146,8 +145,9 @@ class Sorter:
         print "Efficiency: " + str(self.number_of_actions)
 
 
-## Returns a list containing the stripped lines of a graph in edge list format file F.
 def split(f):
+    """Returns a list containing the stripped lines 
+    of a graph in edge list format file F."""
     lines = [line.rstrip() for line in f]
     a, b = lines[0].split(" ")
     a, b = int(a), int(b)
