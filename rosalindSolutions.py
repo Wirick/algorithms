@@ -137,11 +137,11 @@ def shortest_cycles(fl1, fl2):
     each graph, and -1 if such a cycle does not exist to FL2."""
     f, g = open(fl1), open(fl2, "w")
     lines = [line.rstrip() for line in f]
-    graphs, lines, build  = [], lines[2:], []
+    graphs, lines, build  = [], lines[2:], [lines[1]]
     for line in lines:
-      if len(line) == 0:
+      if len(line.split(" ")) == 2:
 	graphs = graphs + [distinguished_edge_graph(build[1:])]
-	build = []
+	build = [line]
       else:
 	build = build + [line]
     graphs = graphs + [distinguished_edge_graph(build[1:])]
