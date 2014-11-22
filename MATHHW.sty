@@ -1,0 +1,245 @@
+\ProvidesPackage{MATHHW}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[showlabels,sections,floats,textmath,displaymath]{preview}
+\usepackage[parfill]{parskip}     
+\usepackage[all]{xy}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{enumerate}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\leftexp}[2]{{\vphantom{#2}}^{#1}{#2}}
+\newcommand{\lex}[2]{{\vphantom{#2}}^{#1}{#2}}
+\def\Lecture[#1]{\chapter*{Lecture #1}
+\setcounter{equation}{0}}
+\def\Notes[#1]{\chapter*{Notes on #1}
+\setcounter{equation}{0}}
+\def\Intro{\subsection*{Introduction}}
+\def\Homework[#1]{\chapter*{Homework #1}
+\setcounter{equation}{0}}
+\def\S{\mathbb{S}}
+\def\series#1{\sum_{n = #1}^{\infty}}
+\def\taylor{\sum_{n = 0}^{\infty}}
+\def\iint#1{\int_{#1}^{\infty}}
+\def\infint#1#2{\int_{#1}^{#2}}
+\def\taylorone{\sum_{n = 1}^{\infty}}
+\def\laurent[#1]#2{\sum_{n = #1}^{\infty}#2}
+\def\lineint#1{\int_{\gamma} #1}
+\def\next{\vskip 1 mm}
+\def\hom#1{\text{hom}(#1)}
+\def\dlineint#1#2{\int_{#1} #2}
+\def\diagram#1{\xymatrix{ #1}}
+\def\dint[#1][#2][#3]#4{\int_{#1}^{#2}{#4}\,d#3}
+\def\Section[#1]{\chapter*{Section #1}}
+\def\inflimc#1{\lim_{#1\to\infty}}
+\def\inflim{\lim_{n\to\infty}}
+\def\inflimsup{\limsup_{n\to\infty}}
+\def\infliminf{\liminf_{n\to\infty}}
+\def\infseq#1{\left(#1\right)^{\infty}_{n=1}}
+\newtheorem*{claim}{Claim}
+\newtheorem{thrm}{Theorem}
+\newtheorem{lema}[thrm]{Lemma}
+\newtheorem{corr}[thrm]{Corollary}
+\newtheorem*{qu}{Question}
+\newtheorem{propn}[thrm]{Proposition}
+\newtheorem{conje}[thrm]{Conjecture}
+\def\nsthm{ \begin{thrm}}
+\def\endnsthm{\end{thrm}}
+\def\cor{\vskip .2 cm \begin{corr}}
+\def\endcor{\end{corr}}
+\def\lemma{\vskip .2 cm \begin{lema}}
+\def\endlemma{\end{lema}}
+\def\conj{\vskip .2 cm \begin{conje}}
+\def\endconj{\end{conje}}
+\def\thm{\vskip .2 cm \begin{thrm}}
+\def\endthm{\end{thrm}}
+\def\Sec#1{\section*{#1}}
+\def\paren#1{\left( #1 \right)}
+\def\Topic#1{\subsection*{#1}}
+\def\Subtopic#1{\subsubsection*{#1}}
+\theoremstyle{definition}
+\newtheorem{exm}{Example}
+\newtheorem*{rcll}{Recall}
+\def\wu{\vskip .2 cm  \begin{wup} }
+\def\endwu{\end{wup}}
+\def\clm{\vskip .2 cm \begin{claim}}
+\def\endclm{\end{claim}}
+\def\q{\vskip .2 cm  \begin{qu} }
+\def\endq{ \end{qu}}
+\def\nsq{ \begin{qu} }
+\def\endnsq{ \end{qu}}
+\def\ex{\vskip .2 cm  \begin{exm} }
+\def\endex{ \end{exm}}
+\def\nsex{ \begin{exm} }
+\def\endnsex{ \end{exm}}
+\def\nsrcl{ \begin{rcll} }
+\def\endnsrcl{\end{rcll}}
+\def\rcl{\vskip .2 cm  \begin{rcll} }
+\def\endrcl{\end{rcll}}
+\def\nspf{\begin{proof}}
+\def\endnspf{\end{proof}}
+\def\pf{\vskip .2 cm  \begin{proof}}
+\def\endpf{\vskip .2 cm  \end{proof}}
+\newtheorem{defin}{Definition}
+\newtheorem*{obs}{Observe}
+\newtheorem*{ntes}{Note}
+\newtheorem*{fct}{Fact}
+\newtheorem*{solnn}{Solution}
+\def\fact{\vskip .2 cm  \begin{fct} }
+\def\endfact{ \end{fct}}
+\def\note{\vskip .2 cm  \begin{ntes} }
+\def\endnote{ \end{ntes}}
+\def\nsfct{ \begin{fact} }
+\def\endnsfct{ \end{fact}}
+\def\ob{\vskip .2 cm  \begin{obs} }
+\def\endob{\end{obs}}
+\def\nsob{\begin{obs}}
+\def\endnsob{\end{obs}}
+\def\defn{\vskip .2 cm \begin{defin}}
+\def\enddefn{\end{defin}}
+\def\nsdefn{\begin{defin}}
+\def\endnsdefn{\end{defin}}
+\newtheorem*{ans}{Answer}
+\newtheorem{eq}[equation]{Equation}
+\newtheorem{wup}[exm]{Warm-up}
+\def\b#1{{\bf #1}}
+\def\a{\vskip .2 cm \begin{ans}}
+\def\enda{\end{ans}}
+\def\prop{\vskip .2 cm  \begin{propn}}
+\def\endprop{\end{propn}}
+\def\soln{\vskip .2 cm \begin{solnn}}
+\def\endsoln{\end{solnn}
+\vskip .4 in}
+\theoremstyle{remark}
+\newtheorem*{thoughts}{Thoughts}
+\newtheorem*{rmrk}{Remark}
+\newtheorem*{nota}{Notation}
+\def\rmk{\vskip .2 cm  \begin{rmrk} }
+\def\endrmk{\end{rmrk}}
+\newcount\probcount
+\def\problem{\global\advance\probcount1  {\bf Problem}
+  \the\probcount\@ifnextchar[{\problem@}{.\\}}
+\def\problem@[#1]{:\,\,#1.\\}
+\def\endproblem{\vskip .2 in}
+\def\seq#1{\left\{ #1 \right\}}
+\def\cif[#1][#2][#3]#4{\frac{1}{2\pi i}\int_{#1}{\frac{#2}{#3}#4}}
+\def\b#1{{\bf #1}}
+\def\mod{\mathop{\mathrm{mod\,}}}
+\def\ln{\,\mathop{\mathrm{ln}}}
+\def\log{\mathop{\mathrm{log\,}}}
+\def\lub{\mathop{\mathrm{lub \,}}}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\mesh}{mesh}
+\def\order#1{\left|#1\right|}
+\def\gen#1{\left\langle#1\right\rangle}
+\def\sumi[#1]{\@ifnextchar[{\sumi@}{\sumi@@}}
+\def\sum@@[#1]#2{\sum_{i = 0}^{#1}{ #2x^{#1}}}
+\def\sumi@[#1][#2]{\@ifnextchar[{\sumi@@@}{\sumi@@@@}}
+\def\sumi@@@[#1][#2][#3]#4{\sum_{#3 = #2}^{#1}{#4 x^{#3}}}
+\def\sumi@@@@[#1][#2]#3{\sum_{i = #2}^{#1}{ #3 x^i}}
+\def\homs{\@ifnextchar[{\hom@}{\hom@[]}}
+\def\hom@[#1]#2{\text{hom}_{#1}(#2)}
+\def\cg#1{{\bf #1}}
+\def\set{\@ifnextchar[{\set@}{\set@@}}
+\def\set@[#1]#2{\left\{ #1 \; \middle| \; #2\right\}}
+\def\set@@#1{\left\{#1\right\}}
+\def\sin{@ifnextchar[{\sin@}{\sin@[]}}
+\def\sin@[#1]#2{\text{sin}^{#1}\,#2\,}
+\def\fn#1#2#3{\,#3 \, :\, #1 \to #2}
+\def\ul#1#2#3{#3\ar[r]^{#1}\ar[d]^{#2}}
+\def\ult#1#2#3{#1\ar[r]^{#2}\ar[dr]^{#3}}
+\def\bl#1#2{#2\ar[r]^{#1}}
+\def\ur#1#2{#2\ar[d]^{#1}}
+\def\inv#1{#1^{-1}}
+\def\mg#1{#1^{\times}}
+\def\mod#1{\;\text{mod}\,\,#1}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\I}{\mathbb I}
+\newcommand{\N}{\mathbb N}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\ca}{\mathcal}
+\newcommand{\p}{\partial}
+\def\tan{\@ifnextchar[{\tan@}{\tan@[]}}
+\def\tan@[#1]#2{\text{tan}^{#1}\,#2\,}
+\def\cos{\@ifnextchar[{\cos@}{\cos@[]}}
+\def\cos@[#1]#2{\text{cos}^{#1}\,#2\,}
+\def\cot{\@ifnextchar[{\cot@}{\cot@[]}}
+\def\cot@[#1]#2{\text{cot}^{#1}\,#2\,}
+\def\sin{\@ifnextchar[{\sin@}{\sin@[]}}
+\def\sin@[#1]#2{\text{sin}^{#1}\,#2\,}
+\def\pa{\@ifnextchar[{\pa@}{\pa@[]}}
+\def\pa@[#1]#2{\frac{\partial{#1}}{\partial{#2}}}
+\def\ilFigure[#1][#2]{
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{#2}
+\end{center}
+\caption{#1}
+\end{figure*}
+}
+\def\Figure[#1][#2]{
+\begin{figure*}[ht]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{#2}
+\end{center}
+\caption{#1}
+\end{figure*}
+}
+\def\dFigure[#1][#2]{
+\begin{figure*}[hb]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{#2}
+\end{center}
+\caption{#1}
+\end{figure*}
+}
+\def\wo{\;\backslash}
+\def\over#1#2{\overset{#1}{#2}}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+\DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
+\def\titlepg[#1][#2]{
+\begin{titlepage}
+
+\changetext{}{}{}{((\paperwidth  - \textwidth) / 2) - \oddsidemargin - \hoffset - 1in}{}
+\null\vfill
+\begin{center}
+\large
+\sffamily
+
+\bigskip
+
+{\Large\spacedlowsmallcaps{#1}} \\
+
+\bigskip
+
+{\huge\spacedlowsmallcaps{#2} \\
+}
+
+\bigskip
+    
+\vspace{9cm}
+
+\begin{tabular} {cc}
+\parbox{0.3\textwidth}{\includegraphics[width=2.5cm]{Birds}}
+&
+\parbox{0.7\textwidth}{{\Large\spacedlowsmallcaps{\mySubTitle}} \\ 
+
+					{\normalsize
+					
+					\myGroup \\
+					\myUrl \\
+					\myTime}}
+			\end{tabular}
+\end{center}
+\vfill
+\end{titlepage}
+}
+\usepackage[toc,page]{appendix}
+ \usepackage[final]{pdfpages}
+
