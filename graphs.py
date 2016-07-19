@@ -2,7 +2,7 @@
 ## verticies to sets of (incident vertex, cost) tuples. We view every graph as a directed
 ## graph, as an undirected graph with an edge a -- b can be represented as a --> b and
 ## b --> a.
-from search import *
+from search import breadth_first_search, depth_first_search
 from collections import defaultdict
 
 def incident_list(edges):
@@ -10,7 +10,7 @@ def incident_list(edges):
     strings of the form "a b(\\s cost)!", adds to a dictionary
     of edges with keys the starting location and values a tuple
     (end location, cost). When no cost is specified, a cost of 1 is assigned."""
-    dic = defaultdict(lambda: set())
+    dic = defaultdict(set)
     for edge in edges:
         vals = edge.split(" ")
         if len(vals) == 2:
@@ -25,7 +25,7 @@ def undirected_incident_list(edges):
     strings of the form "a b(\\s cst)!" where a and b have an edge, adds
     to a dictionary of edges with keys the starting location and values a tuple
     (end location, cst). When no cst is specified, a cost of 1 is assigned."""
-    dic = defaultdict(lambda: set())
+    dic = defaultdict(set)
     for edge in edges:
         vals = edge.split(" ")
         if len(vals) == 2:
@@ -40,7 +40,7 @@ def undirected_incident_list(edges):
 def degree_array(incidents, n):
     """Given a graph of INCIDENTS of order N, returns a counter where
     counter[i] = d, where d is the degree of vertex i: element of {1, ... , N}."""
-    counter = defaultdict(lambda: 0)
+    counter = defaultdict(int)
     for line in incidents:
         a, b = line.split(" ")
         counter[a] += 1
@@ -52,7 +52,7 @@ def double_degree_array(incidents, n):
     a count(er) where count[i] = the total sum of the degrees of i's neighbors."""
     degreeList = degreeArray(incidents, n)
     incidents = incidentList(incidents)
-    count = defaultdict(lambda: 0)
+    count = defaultdict(int)
     for i in range(n):
         for j in incidents[str(i+1)]:
             count[str(i+1)] += degreeList[j]

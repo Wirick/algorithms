@@ -98,7 +98,7 @@ def merge(first, second, size1, size2):
 def get_majority_element(arr, n):
     """single value occupies more than half the indicies of ARR."""
     val = float(n/2)
-    vals = defaultdict(lambda: 0)
+    vals = defaultdict(int)
     for i in range(n):
         vals[arr[i]] += 1
     for value in vals:
